@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src='/js/search_list.js'></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link href='/css/search_list.css' rel='stylesheet' />
+    <link href="/css/star.css" rel="stylesheet">
+    <title>Movie Insight</title>
+</head>
+<body>
+    
+    <div id='container' style="display: none;">
+        <h1>"{{ query }}" 검색 결과</h1>
+        <ul>
+            {% for movie in movies.results %}
+            <li>
+                <div class='movie_content'>
+                    <a class='poster_link' href='/detail?movie_id={{ movie.id }}'>
+                        <img class='poster' src="https://image.tmdb.org/t/p/original{{ movie.poster_path }}" alt="{{ movie.title }} 포스터">
+                    </a>
+                    <div class='movie_description'>
+                        <div class='movie_simple_info'>
+                            <strong><span class='movie_title'>{{ movie.original_title }}</span></strong>
+                            <span class='nowrap'>개봉일: {{ movie.release_date }}</span>
+                            <span class='nowrap'>평점: {{ movie.vote_average }}</span>
+                            <i data-star="{{ movie.vote_average }}"></i>
+                        </div>
+                        {% if movie.overview !== '' %}
+                            <div class='movie_overview'>
+                                <hr>
+                                {{ movie.overview }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="pagination">
+            {% if movies.page > 1 %}
+                <a href="?query={{ query }}&page={{ movies.page - 1 }}">&laquo;</a>
+            {% endif %}
+            {% for page in range(1, movies.total_pages + 1) %}
+                {% if page == movies.page %}
+                    <span>{{ page }}</span>
+                {% else %}
+                    <a href="?query={{ query }}&page={{ page }}">{{ page }}</a>
+                {% endif %}
+            {% endfor %}
+            {% if movies.page < movies.total_pages %}
+                <a href="?query={{ query }}&page={{ movies.page + 1 }}">&raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+    
+</body>
+</html>

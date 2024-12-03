@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style-type: none;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie_container {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.movie_list {
+    display: flex;
+    gap: 32px;
+    overflow: auto;
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 7rem;
+}
+
+.movie_poster_link {
+    flex: 170px;
+}
+
+.movie_poster {
+    width: 100%;
+    border-radius: 8px;
+    height: 10rem;
+    object-fit: fill;
+}
+
+.movie_title {
+    font-weight: bold;
+}
+
+.movie_info {
+    font-size: .8rem;
+    color: rgb(180, 180, 180);
+}
+
+#cast_list_container {
+    margin: 0 20px 0 20px;
+}
+
+.cast {
+    display: flex;
+    flex-direction: column;
+    min-width: 8rem;
+    gap: 8px;
+}
+
+.cast_profile_img {
+    border-radius: 8px;
+}
+
+.cast_character {
+    color: rgb(175, 175, 175);
+    font-size: 0.8rem;
+}

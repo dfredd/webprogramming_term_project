@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style-type: none;
+    padding: 0;
+}
+
+#movie_detail_container {
+    background-size: cover;
+}
+
+#movie_detail_bg {
+    background-size: cover;
+    min-width: 40rem;
+}
+
+#movie_detail_content {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 32px;
+    color: white;
+    max-width: 70rem;
+}
+
+#movie_poster {
+    width: 20rem;
+    object-fit: contain;
+}
+
+#overview {
+    line-height: 1.5;
+}
+
+#crew_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+#cast_list {
+    display: flex;
+    overflow: auto;
+    gap: 16px;
+}
+
+#crew {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.crew_dept {
+    color: rgb(175, 175, 175);
+    font-size: 0.8rem;
+}
+
+#cast_list_container {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.cast {
+    display: flex;
+    flex-direction: column;
+    min-width: 8rem;
+    gap: 8px;
+}
+
+.cast_profile_img {
+    border-radius: 8px;
+    min-height: 12rem;
+    object-fit: contain;
+}
+
+.cast_character {
+    color: rgb(175, 175, 175);
+    font-size: 0.8rem;
+}
+
+.overlay {
+    border-image: linear-gradient(hsla(0, 0%, 0%, 0.4), hsla(0, 0%, 0%, 0.8)) fill 1;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link href='/css/detail.css' rel='stylesheet' />
+    <script defer src="/js/detail.js"></script>
+    <title>{{ detail.title }}</title>
+</head>
+
+<body>
+    <div id="movie_detail_container">
+        <div id="movie_detail_bg" class="overlay"
+            style="background-image: url('https://image.tmdb.org/t/p/original/{{detail.backdrop_path}}');">
+            <div id="movie_detail_content">
+                <img id='movie_poster' src="https://image.tmdb.org/t/p/original{{detail.poster_path}}" alt="">
+                <div id="movie_description">
+                    <h1 id="movie_title">{{ detail.title }}</h1>
+                    <span id="release_data_genres">{{ detail.release_date }} |
+                        {% for genre in detail.genres %}
+                        {{ genre.name }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </span>
+                    <div id="ratings">
+                        <!-- 여기에 제작비, 수익, 평점, 예측된 평점을 표시한다. -->
+                        <p>제작비: {{ detail.budget }}</p>
+                        <p>수익: {{ detail.revenue }}</p>
+                        <p>평점: {{ detail.vote_average }}</p>
+                        <p>예측된 평점: {{ detail.predicted_rating }}</p>
+                    </div>
+
+                    {% if detail.tagline !== "" %}
+                    <span id="tagline"><i>{{ detail.tagline }}</i></span>
+                    {% endif %}
+
+                    {% if detail.overview !== "" %}
+                    <h4>개요</h4>
+                    <p id="overview">{{ detail.overview }}</p>
+                    {% endif %}
+
+                    <ul id="crew_list">
+                        {% for director_and_writers in directors_and_writers %}
+                        <li>
+                            <div id="crew">
+                                <span>{{ director_and_writers.name }}</span>
+                                <span class="crew_dept">{{ director_and_writers.known_for_department }}</span>
+                            </div>
+
+                        </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="cast_list_container">
+            <h3>출연진</h3>
+            <ul id="cast_list">
+                {% for actor in actors %}
+                <li class="cast">
+                    <img class='cast_profile_img' src="https://image.tmdb.org/t/p/original{{ actor.profile_path }}"
+                        alt="{{ actor.name }} 사진">
+                    <span>{{ actor.name }}</span>
+                    <span class="cast_character">{{ actor.character }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -54,9 +54,9 @@ const movieDetailSchema = new mongoose.Schema({
     title: { type: String, required: true },
     video: { type: Boolean },
     vote_average: { type: Number },
-    vote_count: { type: Number }
+    vote_count: { type: Number },
+    omdb_rate: { type: Number },
 });
 
-const MovieDetail = mongoose.model('Movie', movieDetailSchema);
-
-export default MovieDetail;
+export const MovieDetail = mongoose.model('Movie', movieDetailSchema);
+export const MovieTestDetail = mongoose.model('MovieTest', movieDetailSchema);

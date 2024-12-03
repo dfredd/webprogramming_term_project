@@ -1,6 +1,6 @@
 import { delay, getRandomNumberArray } from '../utils/index.js'
 import { getDiscoverMovies, getMovieDetail } from '../api/tmdb.js'
-import MovieDetail from '../model/MovieDetail.js'
+import { MovieDetail, MovieTestDetail } from '../model/MovieDetail.js'
 import dbConn from '../db/connection.js'
 
 dbConn()
@@ -147,6 +147,9 @@ async function discoverMovies() {
             try {
                 const newMovieDetail = new MovieDetail(await getMovieDetail(val));
                 await newMovieDetail.save();
+
+                const newMovieTestDetail = new MovieTestDetail(await getMovieDetail(val));
+                newMovieTestDetail.save();
             } catch (e) {
 
             }
