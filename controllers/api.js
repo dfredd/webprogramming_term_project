@@ -1,10 +1,11 @@
+import { getMovieRatePrediction } from '../services/index.js';
 import { 
     searchMovies, 
     getPopularMovies, 
     getTrendingMovies, 
     getNowPlayingMovies, 
     getMovieDetail 
-} from '../api/tmdb.js';
+} from '../services/tmdb.js';
 
 export const searchMoviesController = async (req, res) => {
     try {
@@ -51,3 +52,16 @@ export const getMovieDetailController = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const getMovieRatePredictionController = async (req, res) => {
+    try {
+        const movie_runtime = req.query.runtime;
+        const movie_revenue = req.query.revenue;
+
+        const pred = await getMovieRatePrediction(movie_runtime, movie_revenue);
+        res.json(pred);
+    } catch (error) {
+        console.error('[controller] getMovieRatePredictionController error: ', error);
+        res.status(500).json({ error: error.message });
+    }
+}

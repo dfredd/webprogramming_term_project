@@ -1,5 +1,5 @@
 import { delay, getRandomNumberArray } from '../utils/index.js'
-import { getDiscoverMovies, getMovieDetail } from '../api/tmdb.js'
+import { getDiscoverMovies, getMovieDetail } from '../services/tmdb.js'
 import { MovieDetail, MovieTestDetail } from '../model/MovieDetail.js'
 import dbConn from '../db/connection.js'
 

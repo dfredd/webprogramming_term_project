@@ -9,6 +9,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.ensemble import RandomForestRegressor
 import pymongo
+import pickle
 
 load_dotenv()
 
@@ -21,17 +22,13 @@ collection = db['movies']
 
 # MongoDB에서 데이터 가져오기
 data = list(collection.aggregate([
-    # { '$sample': { 'size': 3000 }}, # 랜덤으로 3000개의 문서를 가져온다.
     { '$project': { # RDB의 SELECT에 대응. 1이면 포함 0이면 제외, 학습에 필요한 속성만 가져온다.
         "revenue": 1,
         "runtime": 1,
         "omdb_rate": 1,
-        # OMDB를 통해 평점 평균 값도 넣어야 함.
         "_id": 0
     }}
 ]))
-
-# train = pd.read_csv('./model/train.csv')
 
 # 데이터프레임으로 변환
 train = pd.DataFrame(data)
@@ -116,11 +113,14 @@ print(X_train)
 def rmsle(y,y0): return np.sqrt(np.mean(np.square(np.log1p(y)-np.log1p(y0)))) 
 reg = LinearRegression()
 lin_model = reg.fit(X_train, y_train)
-y_pred = reg.predict(X_test)
+y_pred = lin_model.predict(X_test)
 print('RMSLE score for linear model is {}'.format(rmsle(y_test, y_pred)))
-pred1 = reg.predict(X_test)
+pred1 = lin_model.predict(X_test)
 
 print(f'예측된 평점: {pred1[0]}')
+
+with open('lin_model.pkl', 'wb') as f:
+    pickle.dump(lin_model, f)
 
 knn = KNeighborsRegressor(n_neighbors = 5)
 knn_model = knn.fit(X_train, y_train)

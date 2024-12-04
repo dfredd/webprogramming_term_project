@@ -2,7 +2,7 @@
 
 import dbConn from '../db/connection.js'
 import { MovieDetail, MovieTestDetail } from "../model/MovieDetail.js";
-import { getMovieInfoByIMDbId } from '../api/omdb.js';
+import { getMovieInfoByIMDbId } from '../services/omdb.js';
 import { normalizeRatings } from '../utils/omdb.js';
 import { delay } from '../utils/index.js';
 
