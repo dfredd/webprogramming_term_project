@@ -12,7 +12,7 @@
     <header>
         <h1>Movie Insight</h1>
         <p>재미있는 영화를 찾고 계신가요?</p>
-        <form action="/search">
+        <form id='search_form' action="/search">
             <input type="search" name="query" placeholder="검색" />
             <button type="submit">검색</button>
         </form>
@@ -20,14 +20,14 @@
 
     <div id='main'>
         <div class='movie_container' id="trending">
-            <h2>인기 영화</h2>
+            <h2 class="movie_list_title">인기 영화</h2>
 
             <ul class="movie_list">
 
             </ul>
         </div>
         <div class='movie_container' id="now_playing">
-            <h2>최신 영화</h2>
+            <h2 class="movie_list_title">최신 영화</h2>
 
             <ul class="movie_list">
                 
