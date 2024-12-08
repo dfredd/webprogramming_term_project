@@ -24,7 +24,7 @@
                         <div class='movie_simple_info'>
                             <strong><span class='movie_title'>{{ movie.original_title }}</span></strong>
                             <span class='nowrap'>개봉일: {{ movie.release_date }}</span>
-                            <span class='nowrap'>평점: {{ movie.vote_average }}</span>
+                            <span class='nowrap'>평점: {{ (movie.vote_average * 10) | round / 10 }}</span>
                             <i data-star="{{ movie.vote_average }}"></i>
                         </div>
                         {% if movie.overview !== '' %}
