@@ -26,10 +26,10 @@
                     </span>
                     <div id="ratings">
                         <!-- 여기에 제작비, 수익, 평점, 예측된 평점을 표시한다. -->
-                        <p>제작비: {{ detail.budget }}</p>
-                        <p>수익: {{ detail.revenue }}</p>
-                        <p>평점: {{ detail.vote_average }}</p>
-                        <p>예측된 평점: {{ predicted_rating }}</p>
+                        <p class="budget">제작비: {{ detail.budget }}</p>
+                        <p class="budget">수익: {{ detail.revenue }}</p>
+                        <p>평점: {{ (detail.vote_average * 10) | round / 10 }}</p>
+                        <p>예측된 평점: {{ (predicted_rating * 10) | round / 10 }}</p>
                     </div>
 
                     {% if detail.tagline !== "" %}
